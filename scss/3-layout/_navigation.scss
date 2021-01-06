@@ -1,0 +1,134 @@
+//Navbar
+header {
+  height: 15vh;
+  width: 100%;
+  background: map-get($secondary-color, primary);
+  padding: 0 2rem;
+  @include flex-between;
+  position: relative;
+  z-index: 1100;
+  transition: background 0.5s ease;
+  .brand {
+    height: 5rem;
+    width: 5rem;
+
+    @include mobile-nav;
+
+    img {
+      height: 60%;
+      width: 60%;
+      object-fit: contain;
+      object-position: center;
+    }
+
+    h2 {
+      font-size: 1.4rem;
+      letter-spacing: 2px;
+      font-weight: 400;
+      color: map-get($primary-color, primary);
+    }
+  }
+}
+
+.navbar {
+  display: none;
+}
+//burger menu
+.burger {
+  height: 50px;
+  width: 50px;
+
+  @include mobile-nav;
+  cursor: pointer;
+
+  .line {
+    width: 60%;
+    height: 3px;
+    background: map-get($primary-color, primary);
+    position: relative;
+    transition: all 0.5s ease-in;
+  }
+
+  .line::before,
+  .line::after {
+    content: "";
+    display: block;
+    height: 3px;
+    width: 100%;
+    position: absolute;
+    background: map-get($primary-color, primary);
+    transition: all 0.5s ease-in;
+  }
+  .line::before {
+    bottom: 10px;
+  }
+  .line::after {
+    top: 10px;
+  }
+}
+
+.sidebar-nav {
+  position: absolute;
+  top: 15vh;
+  right: 0;
+  height: 85vh;
+  background: map-get($secondary-color, primary);
+  width: 100%;
+  transform: translateX(130%);
+  transition: transform 0.5s ease-in;
+  .sidebar-link-items {
+    @include mobile-nav;
+    height: 100%;
+  }
+}
+//navbar active
+//actual navbar
+.sidebar-active {
+  display: block;
+  transform: translateX(0);
+}
+//burger
+.burger-active .line {
+  transform: rotate(45deg);
+}
+
+.burger-active .line::before {
+  opacity: 0;
+}
+.burger-active .line::after {
+  transform: rotate(90deg) translate(-10px);
+}
+
+@media only screen and (min-width: 768px) {
+  header {
+    background: transparent;
+  }
+  .burger {
+    display: none;
+  }
+
+  .navbar {
+    transform: translateX(0);
+    height: 15vh;
+    width: 60%;
+    background: none;
+    display: block;
+    .link-items {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      flex-direction: row;
+      height: 15vh;
+
+      .link-items_item a {
+        font-size: 1rem;
+      }
+    }
+  }
+}
+
+// @media only screen and (min-width: 888px) {
+//   .navbar {
+//     width: 50%;
+//   }
+// }

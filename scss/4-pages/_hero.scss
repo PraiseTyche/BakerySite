@@ -1,0 +1,131 @@
+.hero {
+  height: 85vh;
+  width: 100%;
+
+  padding: 2rem;
+  @include flex-column;
+
+  z-index: 1000;
+}
+
+.hero-img-container {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+
+  top: 0;
+  left: 0;
+  z-index: 999;
+  img {
+    object-fit: cover;
+    object-position: 20%;
+    height: 100%;
+    width: 100%;
+  }
+}
+
+.hero-img-container::after {
+  content: "";
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  display: block;
+  background: rgba(2, 2, 2, 0.7);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1001;
+  // @include flex-column-left;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  text-align: center;
+  .cta {
+    align-self: center;
+  }
+  .hero-content_header,
+  .hero-content_subheading {
+    color: map-get($primary-color, primary);
+    font-weight: 400;
+  }
+  .hero-content_header {
+    // font-size: 2.5rem;
+    font-size: clamp(2.5rem, 10vw, 4.5rem);
+    border-bottom: 1px solid map-get($primary-color, primary);
+    align-self: center;
+  }
+  .hero-content_subheading {
+    font-size: 2.5rem;
+
+    margin: 0.5rem 0 1rem 0;
+  }
+  br {
+    display: none;
+  }
+  .hero-content_para {
+    color: map-get($font, light);
+    line-height: 1.5;
+    font-size: 1rem;
+  }
+}
+
+//media query
+
+@media only screen and (min-width: 800px) {
+  .hero {
+    height: 85vh;
+
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    .hero-content {
+      width: 55%;
+      .cta {
+        align-self: flex-start;
+      }
+      .hero-content_subheading {
+        font-size: 4.5rem;
+        text-align: left;
+        // margin-bottom: 2rem;
+      }
+      br {
+        display: inline;
+      }
+      .hero-content_header {
+        display: none;
+      }
+
+      .hero-content_para {
+        font-size: 1.3rem;
+        line-height: 1.2;
+        width: 90%;
+        text-align: left;
+      }
+    }
+  }
+
+  .sideways-text {
+    position: absolute;
+    z-index: 1001;
+    right: 65%;
+    transform: rotate(270deg);
+    text-align: center;
+    width: 50%;
+
+    .header {
+      font-size: 5rem;
+      font-weight: 500;
+      color: rgba(199, 199, 199, 0.36);
+    }
+    .sub-header {
+      font-size: 4.5rem;
+      font-weight: 500;
+      color: #bababa;
+    }
+  }
+}

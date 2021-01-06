@@ -1,0 +1,106 @@
+.bread-info {
+  height: 200vh;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.card {
+  height: 50%;
+  width: 100%;
+  padding: 2rem;
+  @include mobile-nav;
+  .card-info {
+    order: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transform: translateY(10%);
+
+    .card-info_header {
+      color: map-get($primary-color, primary);
+      border-bottom: 1px solid map-get($primary-color, primary);
+      margin-bottom: 1rem;
+      font-weight: 400;
+      font-size: 2.5rem;
+    }
+    .card-info_subheader,
+    .definition {
+      color: map-get($font, light);
+    }
+    .definition {
+      line-height: 1.5;
+      font-size: 1rem;
+      text-align: center;
+    }
+    .card-info_subheader {
+      font-weight: 400;
+      font-size: 1.5rem;
+    }
+  }
+  .card-img {
+    order: 0;
+    height: 50vh;
+    order: 0;
+    opacity: 0;
+    transform: translateX(50%);
+    img {
+      object-fit: contain;
+      object-position: center;
+      height: 100%;
+      width: 100%;
+    }
+  }
+}
+.inverse {
+  background: coral;
+}
+
+@media only screen and (min-width: 800px) {
+  .card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    .card-img {
+      order: 1;
+      height: 80vh;
+    }
+    .card-info {
+      order: 0;
+      width: 40%;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      flex-direction: column;
+
+      .card-info_header {
+        font-size: 5rem;
+        letter-spacing: 2px;
+        border-bottom: 1px solid map-get($primary-color, primary);
+        margin-bottom: 1rem;
+      }
+
+      .card-info_subheader {
+        font-size: 2rem;
+      }
+      .definition {
+        text-align: left;
+        font-size: 1.2rem;
+      }
+    }
+  }
+}
+
+//overlay for observer
+.overlay {
+  position: fixed;
+  top: 50px;
+  bottom: 50px;
+  right: 0;
+  left: 0;
+  background: rgba(255, 255, 255, 0.3);
+  z-index: 100000;
+}
